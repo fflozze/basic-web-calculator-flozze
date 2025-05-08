@@ -1,0 +1,113 @@
+@import "./color.css";
+@import "./font.css";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+#gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  padding: 15px;
+  position: relative;
+  left: 40vw;
+  top: 25vh;
+  height: 57vh;
+  width: 20vw;
+  background-color: var(--bg-container-color);
+  border-radius: 25px;
+  box-shadow: 3px 3px 12px #555;
+}
+
+#screenDisplay {
+  grid-area: 1 / 1 / 2 / 5;
+  background-color: var(--button-color);
+  box-shadow: 3px 3px 12px #202020;
+  border-radius: 25px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 15px;
+  color: var(--font-color);
+  text-shadow: 3px 3px 12px #747474;
+  font-family: var(--font-police);
+  font-size: 5rem;
+}
+
+.button {
+  background-color: var(--button-color);
+  box-shadow: 3px 3px 12px #202020;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  border: none;
+  color: var(--font-color);
+  text-shadow: 3px 3px 12px #747474;
+  font-family: var(--font-police);
+  font-size: 5rem;
+  cursor: pointer;
+}
+
+#clearButton {
+  grid-area: 2 / 1 / 3 / 2;
+  background-color: var(--clear-button);
+}
+#divisionButton {
+  grid-area: 2 / 2 / 3 / 3;
+}
+#multiplicationButton {
+  grid-area: 2 / 3 / 3 / 4;
+}
+#additionButton {
+  grid-area: 2 / 4 / 3 / 5;
+}
+#septButton {
+  grid-area: 3 / 1 / 4 / 2;
+}
+#huitButton {
+  grid-area: 3 / 2 / 4 / 3;
+}
+#neufButton {
+  grid-area: 3 / 3 / 4 / 4;
+}
+#soustractionButton {
+  grid-area: 3 / 4 / 4 / 5;
+}
+#quatreButton {
+  grid-area: 4 / 1 / 5 / 2;
+}
+#cinqButton {
+  grid-area: 4 / 2 / 5 / 3;
+}
+#sixButton {
+  grid-area: 4 / 3 / 5 / 4;
+}
+#resultatButton {
+  grid-area: 4 / 4 / 5 / 5;
+  background-color: var(--addition-button);
+}
+#unButton {
+  grid-area: 5 / 1 / 6 / 2;
+}
+#deuxButton {
+  grid-area: 5 / 2 / 6 / 3;
+}
+#troisButton {
+  grid-area: 5 / 3 / 6 / 4;
+}
+#zeroButton {
+  grid-area: 5 / 4 / 6 / 5;
+}
+#decimalButton {
+  grid-area: 6 / 1 / 7 / 2;
+}
