@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Déclaration du jeu de caractères utilisé dans le document -->
     <meta charset="UTF-8" />
+    <!-- Configuration de la vue pour les appareils mobiles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Titre de la page affiché dans l'onglet du navigateur -->
     <title>Calculatrice Basique</title>
+    <!-- Lien vers le fichier CSS pour styliser la calculatrice -->
     <link rel="stylesheet" href="./css/calculatrice.css" />
   </head>
   <body>
+    <!-- Section principale contenant la calculatrice -->
     <section>
+      <!-- Conteneur pour les boutons de la calculatrice -->
       <div id="gridContainer">
+        <!-- Bouton pour afficher le résultat ou les entrées -->
         <button id="screenDisplay">0</button>
+        <!-- Bouton pour effacer l'affichage -->
         <button class="button" id="clearButton">C</button>
-        <button class="button" id="divisionButton">/</button>
-        <button class="button" id="multiplicationButton">x</button>
-        <button class="button" id="additionButton">+</button>
-        <button class="button" id="septButton">7</button>
-        <button class="button" id="huitButton">8</button>
-        <button class="button" id="neufButton">9</button>
-        <button class="button" id="soustractionButton">-</button>
-        <button class="button" id="quatreButton">4</button>
-        <button class="button" id="cinqButton">5</button>
-        <button class="button" id="sixButton">6</button>
+        <!-- Bouton pour l'opération de division -->
+        <button class="button">/</button>
+        <!-- Bouton pour l'opération de multiplication -->
+        <button class="button">x</button>
+        <!-- Bouton pour l'opération d'addition -->
+        <button class="button">+</button>
+        <!-- Boutons pour les chiffres de 7 à 9 -->
+        <button class="button">7</button>
+        <button class="button">8</button>
+        <button class="button">9</button>
+        <!-- Bouton pour l'opération de soustraction -->
+        <button class="button">-</button>
+        <!-- Boutons pour les chiffres de 4 à 6 -->
+        <button class="button">4</button>
+        <button class="button">5</button>
+        <button class="button">6</button>
+        <!-- Bouton pour calculer le résultat -->
         <button class="button" id="resultatButton">=</button>
-        <button class="button" id="unButton">1</button>
-        <button class="button" id="deuxButton">2</button>
-        <button class="button" id="troisButton">3</button>
-        <button class="button" id="zeroButton">0</button>
-        <button class="button" id="decimalButton">.</button>
+        <!-- Boutons pour les chiffres de 1 à 3 -->
+        <button class="button">1</button>
+        <button class="button">2</button>
+        <button class="button">3</button>
+        <!-- Bouton pour le chiffre 0 -->
+        <button class="button">0</button>
+        <!-- Bouton pour le point décimal -->
+        <button class="button">.</button>
       </div>
     </section>
   </body>
-  <script src="./index.js"></script>
+  <!-- Lien vers le fichier JavaScript principal pour la logique de la calculatrice -->
+  <script type="module" src="./js/main.js"></script>
 </html>

@@ -1,8 +1,24 @@
+/**
+ * Déclaration de la police personnalisée "Digital-7".
+ */
 @font-face {
+  /**
+   * Nom de la police personnalisée.
+   */
   font-family: "Digital-7";
-  src: url(.//font/digital-7.ttf);
+
+  /**
+   * Chemin vers le fichier de police.
+   */
+  src: url(./font/digital-7.ttf);
 }
 
+/**
+ * Définition des variables globales pour les styles.
+ */
 :root {
+  /**
+   * Variable pour la police de caractères principale.
+   */
   --font-police: Digital-7;
 }
