@@ -5,7 +5,7 @@
  */
 .button {
   background-color: var(--button-color); /* Couleur de fond */
-  box-shadow: 3px 3px 12px #202020; /* Ombre légère */
+  box-shadow: 3px 3px 12px #000000; /* Ombre légère */
   display: flex; /* Utilisation de flexbox */
   justify-content: center; /* Centrage horizontal */
   align-items: center; /* Centrage vertical */
@@ -16,6 +16,14 @@
   font-family: var(--font-police); /* Police de caractères */
   font-size: 5rem; /* Taille de la police */
   cursor: pointer; /* Curseur en forme de main */
+  transition: all 0.1s ease; /* Animation fluide pour toutes les propriétés */
+  transform: scale(1); /* État initial */
+}
+
+/* Animation de pression au clavier */
+.keyboard-press {
+  transform: scale(0.95);
+  box-shadow: 1px 1px 4px #202020;
 }
 
 /**
@@ -137,4 +145,4 @@
  */
 #decimalButton {
   grid-area: 6 / 1 / 7 / 2; /* Positionnement dans la grille */
-} 
+}

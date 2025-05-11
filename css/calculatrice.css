@@ -42,7 +42,7 @@ body {
     --bg-container-color
   ); /* Couleur de fond des conteneurs */
   border-radius: 25px; /* Coins arrondis */
-  box-shadow: 3px 3px 12px #555; /* Ombre légère pour l'effet de profondeur */
+  box-shadow: 3px 3px 12px #000000; /* Ombre légère pour l'effet de profondeur */
 }
 
 /**

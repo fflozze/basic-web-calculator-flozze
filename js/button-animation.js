@@ -13,13 +13,13 @@ const buttons = document.querySelectorAll('.button');
  * @param {HTMLButtonElement} button - Le bouton auquel ajouter les animations
  */
 const addButtonAnimations = (button) => {
-    // Animation lors de l'appui sur le bouton
+    // Animation lors de l'appui sur le bouton (souris)
     button.addEventListener('mousedown', () => {
         button.style.transform = 'scale(0.95)';
         button.style.boxShadow = '1px 1px 4px #202020';
     });
 
-    // Retour à l'état normal lors du relâchement du bouton
+    // Retour à l'état normal lors du relâchement du bouton (souris)
     button.addEventListener('mouseup', () => {
         button.style.transform = 'scale(1)';
         button.style.boxShadow = '3px 3px 12px #202020';
@@ -41,6 +41,30 @@ const addButtonAnimations = (button) => {
         button.style.transform = 'scale(1)';
         button.style.boxShadow = '3px 3px 12px #202020';
     });
+
+    // Support du clavier
+    button.addEventListener('keydown', (event) => {
+        // Vérifie si la touche est Entrée ou Espace
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault(); // Empêche le défilement de la page avec la barre d'espace
+            button.style.transform = 'scale(0.95)';
+            button.style.boxShadow = '1px 1px 4px #202020';
+        }
+    });
+
+    button.addEventListener('keyup', (event) => {
+        // Vérifie si la touche est Entrée ou Espace
+        if (event.key === 'Enter' || event.key === ' ') {
+            button.style.transform = 'scale(1)';
+            button.style.boxShadow = '3px 3px 12px #202020';
+        }
+    });
+
+    // Animation lors de la perte du focus (pour le clavier)
+    button.addEventListener('blur', () => {
+        button.style.transform = 'scale(1)';
+        button.style.boxShadow = '3px 3px 12px #202020';
+    });
 };
 
 /**
@@ -49,6 +73,8 @@ const addButtonAnimations = (button) => {
  */
 const initializeButtonAnimations = () => {
     buttons.forEach(button => {
+        // Rendre le bouton focusable pour le support du clavier
+        button.setAttribute('tabindex', '0');
         addButtonAnimations(button);
     });
 };

@@ -4,65 +4,131 @@
 import { calculate } from "./calculator.js";
 
 /**
- * Initialise les événements de clic pour les boutons de la calculatrice.
+ * Initialise les gestionnaires d'événements pour les boutons de la calculatrice.
  * @param {NodeList} buttons - Liste des boutons de la calculatrice.
  * @param {HTMLElement} display - Élément d'affichage de la calculatrice.
- * @param {string} currentInput - Entrée actuelle de l'utilisateur.
- * @param {string} operator - Opérateur mathématique sélectionné.
- * @param {string} previousInput - Entrée précédente de l'utilisateur.
+ * @param {Object} state - Objet contenant l'état de la calculatrice.
  */
-export function initializeButtons(
-  buttons,
-  display,
-  currentInput,
-  operator,
-  previousInput
-) {
-  /**
-   * Ajoute un écouteur d'événement à chaque bouton.
-   */
+export function initializeButtons(buttons, display, state) {
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       const value = button.textContent;
 
-      /**
-       * Si le bouton est un chiffre ou un point décimal, ajoute la valeur à l'entrée actuelle.
-       */
-      if ((value >= "0" && value <= "9") || value === ".") {
-        currentInput += value;
-        display.textContent = currentInput;
-      } else if (
-        /**
-         * Si le bouton est un opérateur (+, -, x, /), enregistre l'opérateur et l'entrée précédente.
-         */
-        value === "+" ||
-        value === "-" ||
-        value === "x" ||
-        value === "/"
-      ) {
-        operator = value;
-        previousInput = currentInput;
-        currentInput = "";
-      } else if (value === "=") {
-        /**
-         * Si le bouton est "=", calcule le résultat de l'opération.
-         */
-        if (operator && previousInput && currentInput) {
-          const result = calculate(previousInput, operator, currentInput);
-          display.textContent = result;
-          currentInput = result;
-          operator = "";
-          previousInput = "";
-        }
+      if (value >= "0" && value <= "9") {
+        handleNumberInput(value, display, state);
+      } else if (value === ".") {
+        handleDecimalInput(display, state);
       } else if (value === "C") {
-        /**
-         * Si le bouton est "C", réinitialise l'affichage et les variables d'état.
-         */
-        currentInput = "";
-        operator = "";
-        previousInput = "";
-        display.textContent = "0";
+        handleClearInput(display, state);
+      } else if (value === "=") {
+        handleEqualsInput(display, state);
+      } else {
+        handleOperatorInput(value, display, state);
       }
     });
   });
+}
+
+/**
+ * Gère l'entrée d'un nombre.
+ * @param {string} value - Le nombre entré.
+ * @param {HTMLElement} display - L'élément d'affichage.
+ * @param {Object} state - L'état de la calculatrice.
+ */
+function handleNumberInput(value, display, state) {
+  if (state.currentInput === "0") {
+    state.currentInput = value;
+  } else {
+    state.currentInput += value;
+  }
+  display.textContent = state.currentInput;
+}
+
+/**
+ * Gère l'entrée d'une décimale.
+ * @param {HTMLElement} display - L'élément d'affichage.
+ * @param {Object} state - L'état de la calculatrice.
+ */
+function handleDecimalInput(display, state) {
+  if (!state.currentInput.includes(".")) {
+    state.currentInput += ".";
+    display.textContent = state.currentInput;
+  }
+}
+
+/**
+ * Gère la réinitialisation de la calculatrice.
+ * @param {HTMLElement} display - L'élément d'affichage.
+ * @param {Object} state - L'état de la calculatrice.
+ */
+function handleClearInput(display, state) {
+  state.currentInput = "";
+  state.operator = "";
+  state.previousInput = "";
+  display.textContent = "0";
+}
+
+/**
+ * Gère la suppression du dernier chiffre.
+ * @param {HTMLElement} display - L'élément d'affichage.
+ * @param {Object} state - L'état de la calculatrice.
+ */
+export function handleBackspace(display, state) {
+  if (state.currentInput.length > 0) {
+    state.currentInput = state.currentInput.slice(0, -1);
+    display.textContent = state.currentInput || "0";
+  }
+}
+
+/**
+ * Gère l'entrée d'un opérateur.
+ * @param {string} value - L'opérateur entré.
+ * @param {HTMLElement} display - L'élément d'affichage.
+ * @param {Object} state - L'état de la calculatrice.
+ */
+function handleOperatorInput(value, display, state) {
+  if (state.currentInput === "") return;
+
+  if (state.previousInput !== "") {
+    handleEqualsInput(display, state);
+  }
+
+  state.operator = value;
+  state.previousInput = state.currentInput;
+  state.currentInput = "";
+}
+
+/**
+ * Gère le calcul du résultat.
+ * @param {HTMLElement} display - L'élément d'affichage.
+ * @param {Object} state - L'état de la calculatrice.
+ */
+function handleEqualsInput(display, state) {
+  if (state.previousInput === "" || state.currentInput === "") return;
+
+  const prev = parseFloat(state.previousInput);
+  const current = parseFloat(state.currentInput);
+  let result;
+
+  switch (state.operator) {
+    case "+":
+      result = prev + current;
+      break;
+    case "-":
+      result = prev - current;
+      break;
+    case "×":
+      result = prev * current;
+      break;
+    case "÷":
+      result = prev / current;
+      break;
+    default:
+      return;
+  }
+
+  state.currentInput = result.toString();
+  display.textContent = state.currentInput;
+  state.operator = "";
+  state.previousInput = "";
 }

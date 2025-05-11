@@ -12,6 +12,8 @@ La "Calculatrice Web Basique" est une application web simple qui permet d'effect
 - Support des entrées via clavier et clics sur les boutons.
 - Responsive Design : Adaptation automatique de l'interface aux différentes tailles d'écran grâce à `media-query.css`.
 - Animations interactives pour les boutons grâce à `button-animation.js`.
+- Support tactile pour les appareils mobiles.
+- Gestion des entrées clavier pour une meilleure accessibilité.
 
 ## Structure du projet 📂
 
@@ -56,6 +58,8 @@ basic-web-calculator-flozze/ \
 
 3. Vous pouvez également utiliser votre clavier pour entrer des chiffres et des opérateurs.
 
+4. Sur les appareils mobiles, utilisez les boutons tactiles pour interagir avec la calculatrice.
+
 ## Documentation 📖
 
 La documentation du code est générée avec des commentaires JSDoc. Pour générer la documentation, suivez ces étapes :
@@ -69,10 +73,10 @@ La documentation du code est générée avec des commentaires JSDoc. Pour géné
 2. Générez la documentation en exécutant la commande suivante dans le répertoire du projet :
 
    ```bash
-   jsdoc js/button-handler.js js/calculator.js js/keyboard-handler.js js/main.js
+   jsdoc js/button-animation.js js/button-handler.js js/calculator.js js/keyboard-handler.js js/main.js
    ```
 
-3. Ouvrez le fichier index.html dans le dossier out pour visualiser la documentation.
+3. Ouvrez le fichier `index.html` dans le dossier `out` pour visualiser la documentation.
 
 ## Auteur 👨‍💻
 
