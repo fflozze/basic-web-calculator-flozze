@@ -22,7 +22,7 @@ export function initializeButtons(buttons, display, state) {
         handleClearInput(display, state);
       } else if (value === "=") {
         handleEqualsInput(display, state);
-      } else {
+      } else if (["+", "-", "×", "÷"].includes(value)) {
         handleOperatorInput(value, display, state);
       }
     });

@@ -64,7 +64,8 @@ export function initializeKeyboard(display, state) {
  * @returns {HTMLElement|null} Le bouton correspondant ou null si aucun bouton ne correspond.
  */
 function getButtonForKey(key) {
-  const buttonMap = {
+  // Mapping des touches clavier vers les symboles de l'interface
+  const keyToSymbol = {
     "0": "0",
     "1": "1",
     "2": "2",
@@ -78,15 +79,22 @@ function getButtonForKey(key) {
     ".": ".",
     "+": "+",
     "-": "-",
-    "*": "×",
-    "/": "÷",
+    "*": "×",  // Conversion explicite de * vers ×
+    "/": "÷",  // Conversion explicite de / vers ÷
     "Enter": "=",
     "Escape": "C",
     "Delete": "C"
   };
 
-  const buttonValue = buttonMap[key];
+  const buttonValue = keyToSymbol[key];
   if (!buttonValue) return null;
+
+  // Pour la touche Enter, chercher spécifiquement le bouton "="
+  if (key === "Enter") {
+    return Array.from(document.querySelectorAll(".button")).find(
+      (button) => button.textContent === "="
+    );
+  }
 
   return Array.from(document.querySelectorAll(".button")).find(
     (button) => button.textContent === buttonValue
