@@ -11,6 +11,7 @@ La "Calculatrice Web Basique" est une application web simple qui permet d'effect
 - Utilisation de variables CSS pour une gestion facile des styles.
 - Support des entrées via clavier et clics sur les boutons.
 - Responsive Design : Adaptation automatique de l'interface aux différentes tailles d'écran grâce à `media-query.css`.
+- Animations interactives pour les boutons grâce à `button-animation.js`.
 
 ## Structure du projet 📂
 
@@ -25,6 +26,7 @@ basic-web-calculator-flozze/ \
 │ └── media-query.css \
 │ \
 ├── js/ \
+│ ├── button-animation.js \
 │ ├── button-handler.js \
 │ ├── calculator.js \
 │ ├── keyboard-handler.js \

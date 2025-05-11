@@ -1,8 +1,9 @@
 /**
- * Importation des fonctions pour initialiser les boutons et le clavier.
+ * Importation des fonctions pour initialiser les boutons, le clavier et ajouter des animations.
  */
 import { initializeButtons } from "./button-handler.js";
 import { initializeKeyboard } from "./keyboard-handler.js";
+import { addButtonAnimations } from "./button-animation.js";
 
 /**
  * Écouteur d'événement pour s'assurer que le DOM est complètement chargé avant d'exécuter le script.
@@ -56,4 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * @param {string} previousInput - Entrée précédente de l'utilisateur.
    */
   initializeKeyboard(display, currentInput, operator, previousInput);
+
+  // Appeler la fonction pour ajouter les animations aux boutons
+  addButtonAnimations();
 });
