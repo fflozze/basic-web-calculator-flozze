@@ -1,0 +1,140 @@
+/* button.css */
+
+/**
+ * Style pour les boutons de la calculatrice.
+ */
+.button {
+  background-color: var(--button-color); /* Couleur de fond */
+  box-shadow: 3px 3px 12px #202020; /* Ombre légère */
+  display: flex; /* Utilisation de flexbox */
+  justify-content: center; /* Centrage horizontal */
+  align-items: center; /* Centrage vertical */
+  border-radius: 25px; /* Coins arrondis */
+  border: none; /* Suppression de la bordure */
+  color: var(--font-color); /* Couleur de la police */
+  text-shadow: 3px 3px 12px #747474; /* Ombre du texte */
+  font-family: var(--font-police); /* Police de caractères */
+  font-size: 5rem; /* Taille de la police */
+  cursor: pointer; /* Curseur en forme de main */
+}
+
+/**
+ * Style spécifique pour le bouton "Clear".
+ */
+#clearButton {
+  grid-area: 2 / 1 / 3 / 2; /* Positionnement dans la grille */
+  background-color: var(--clear-button); /* Couleur de fond spécifique */
+}
+
+/**
+ * Style spécifique pour le bouton de division.
+ */
+#divisionButton {
+  grid-area: 2 / 2 / 3 / 3; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton de multiplication.
+ */
+#multiplicationButton {
+  grid-area: 2 / 3 / 3 / 4; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton d'addition.
+ */
+#additionButton {
+  grid-area: 2 / 4 / 3 / 5; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton "7".
+ */
+#septButton {
+  grid-area: 3 / 1 / 4 / 2; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton "8".
+ */
+#huitButton {
+  grid-area: 3 / 2 / 4 / 3; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton "9".
+ */
+#neufButton {
+  grid-area: 3 / 3 / 4 / 4; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton de soustraction.
+ */
+#soustractionButton {
+  grid-area: 3 / 4 / 4 / 5; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton "4".
+ */
+#quatreButton {
+  grid-area: 4 / 1 / 5 / 2; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton "5".
+ */
+#cinqButton {
+  grid-area: 4 / 2 / 5 / 3; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton "6".
+ */
+#sixButton {
+  grid-area: 4 / 3 / 5 / 4; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton de résultat.
+ */
+#resultatButton {
+  grid-area: 4 / 4 / 5 / 5; /* Positionnement dans la grille */
+  background-color: var(--addition-button); /* Couleur de fond spécifique */
+}
+
+/**
+ * Style spécifique pour le bouton "1".
+ */
+#unButton {
+  grid-area: 5 / 1 / 6 / 2; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton "2".
+ */
+#deuxButton {
+  grid-area: 5 / 2 / 6 / 3; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton "3".
+ */
+#troisButton {
+  grid-area: 5 / 3 / 6 / 4; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton "0".
+ */
+#zeroButton {
+  grid-area: 5 / 4 / 6 / 5; /* Positionnement dans la grille */
+}
+
+/**
+ * Style spécifique pour le bouton décimal.
+ */
+#decimalButton {
+  grid-area: 6 / 1 / 7 / 2; /* Positionnement dans la grille */
+} 
