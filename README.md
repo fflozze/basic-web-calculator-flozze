@@ -42,7 +42,7 @@ basic-web-calculator-flozze/ \
 1. Clonez le dépôt :
 
    ```bash
-   git clone https://github.com/votre-utilisateur/calculatrice-web-basique.git
+   git clone https://github.com/votre-utilisateur/basic-web-calculator-flozze.git
    ```
 
 2. Naviguez dans le répertoire du projet :
