@@ -30,14 +30,14 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 colonnes égales */
   grid-template-rows: repeat(6, 1fr); /* 6 lignes égales */
-  grid-column-gap: 10px; /* Espacement entre les colonnes */
-  grid-row-gap: 10px; /* Espacement entre les lignes */
-  padding: 10px; /* Espacement intérieur */
-  position: relative; /* Positionnement relatif */
-  left: 40vw; /* Décalage horizontal */
-  top: 25vh; /* Décalage vertical */
-  height: 57%; /* Hauteur du conteneur */
-  width: 20%; /* Largeur du conteneur */
+  position: relative;
+  left: 5vw; /* Réduction du décalage horizontal */
+  top: 10vh; /* Réduction du décalage vertical */
+  height: 70vh; /* Ajustement de la hauteur */
+  width: 90vw; /* Ajustement de la largeur */
+  grid-column-gap: 10px; /* Réduction de l'espacement entre les colonnes */
+  grid-row-gap: 10px; /* Réduction de l'espacement entre les lignes */
+  padding: 10px; /* Réduction de l'espacement intérieur */
   background-color: var(
     --bg-container-color
   ); /* Couleur de fond des conteneurs */
@@ -61,5 +61,5 @@ body {
   color: var(--font-color); /* Couleur de la police */
   text-shadow: 3px 3px 12px #747474; /* Ombre du texte */
   font-family: var(--font-police); /* Police de caractères */
-  font-size: 5rem; /* Taille de la police */
+  font-size: 4rem; /* Taille de la police */
 }

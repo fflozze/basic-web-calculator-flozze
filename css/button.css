@@ -14,7 +14,7 @@
   color: var(--font-color); /* Couleur de la police */
   text-shadow: 3px 3px 12px #8a8a8a; /* Ombre du texte */
   font-family: var(--font-police); /* Police de caractères */
-  font-size: 5rem; /* Taille de la police */
+  font-size: 4rem; /* Taille de la police */
   cursor: pointer; /* Curseur en forme de main */
   transition: all 0.1s ease; /* Animation fluide pour toutes les propriétés */
   transform: scale(1); /* État initial */
