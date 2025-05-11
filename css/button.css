@@ -5,14 +5,14 @@
  */
 .button {
   background-color: var(--button-color); /* Couleur de fond */
-  box-shadow: 3px 3px 12px #000000; /* Ombre légère */
+  box-shadow: 3px 3px 12px #1d1d1d; /* Ombre légère */
   display: flex; /* Utilisation de flexbox */
   justify-content: center; /* Centrage horizontal */
   align-items: center; /* Centrage vertical */
   border-radius: 25px; /* Coins arrondis */
   border: none; /* Suppression de la bordure */
   color: var(--font-color); /* Couleur de la police */
-  text-shadow: 3px 3px 12px #747474; /* Ombre du texte */
+  text-shadow: 3px 3px 12px #8a8a8a; /* Ombre du texte */
   font-family: var(--font-police); /* Police de caractères */
   font-size: 5rem; /* Taille de la police */
   cursor: pointer; /* Curseur en forme de main */
@@ -23,7 +23,8 @@
 /* Animation de pression au clavier */
 .keyboard-press {
   transform: scale(0.95);
-  box-shadow: 1px 1px 4px #202020;
+  text-shadow: 3px 3px 12px #8a8a8a; /* Ombre du texte */
+  box-shadow: 1px 1px 4px #1d1d1d;
 }
 
 /**
