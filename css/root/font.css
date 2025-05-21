@@ -10,7 +10,10 @@
   /**
    * Chemin vers le fichier de police.
    */
-  src: url(./font/digital-7.ttf);
+  src: url("/css/font/digital-7.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 /**
@@ -20,5 +23,5 @@
   /**
    * Variable pour la police de caractères principale.
    */
-  --font-police: Digital-7;
+  --font-police: "Digital-7", monospace;
 }

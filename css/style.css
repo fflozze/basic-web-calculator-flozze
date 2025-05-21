@@ -3,9 +3,9 @@
 /**
  * Importation des fichiers CSS externes pour les couleurs et les polices.
  */
-@import "./color.css";
-@import "./font.css";
-@import "./media-query.css";
+@import "./root/color.css";
+@import "./root/font.css";
+@import "./media-query/media-handler.css";
 @import "./button.css";
 
 /**
@@ -62,4 +62,5 @@ body {
   text-shadow: 3px 3px 12px #747474; /* Ombre du texte */
   font-family: var(--font-police); /* Police de caractères */
   font-size: 4rem; /* Taille de la police */
+  overflow: hidden;
 }
