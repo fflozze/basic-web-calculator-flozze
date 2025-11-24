@@ -1,19 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
-    <!-- Déclaration du jeu de caractères utilisé dans le document -->
+    <!-- Métadonnées de base -->
     <meta charset="UTF-8" />
-    <!-- Configuration de la vue pour les appareils mobiles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Titre de la page affiché dans l'onglet du navigateur -->
-    <title>Calculatrice Basique</title>
-    <!-- Lien vers les fichiers CSS pour styliser la calculatrice -->
+    <meta name="description" content="Une calculatrice web moderne et élégante" />
+    <meta name="author" content="Flozze" />
+    <title>Flozze - Calculatrice</title>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="./css/style.css" />
+    <!-- Flag Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+
+    <!-- Scripts -->
+    <!-- i18next pour les traductions (chargé de manière synchrone avant le module) -->
+    <script src="https://cdn.jsdelivr.net/npm/i18next@23.7.6/dist/umd/i18next.min.js"></script>
+    <!-- Utilisation de type="module" et defer pour un chargement optimal -->
+    <script type="module" defer src="./js/main.js"></script>
   </head>
+
   <body>
-    <!-- Section principale contenant la calculatrice -->
-    <section>
-      <!-- Conteneur pour les boutons de la calculatrice -->
+    <!-- Particules animées en arrière-plan -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Bouton de retour -->
+    <a href="https://app.flozze.fr" class="back-button" data-i18n-aria="backButton" aria-label="Retour à app.flozze.fr">
+      <span class="back-arrow">←</span>
+    </a>
+
+    <!-- Contrôles en haut à droite -->
+    <div class="controls-container">
+      <!-- Bouton de sélection de langue -->
+      <div class="control-group">
+        <button class="control-button language-button" id="languageButton" aria-label="Sélectionner la langue">
+          <span class="fi" id="currentLanguageFlag"></span>
+          <span class="control-text" id="languageText">Français</span>
+        </button>
+        <div class="dropdown-menu" id="languageDropdown">
+          <button class="dropdown-item" data-lang="fr">
+            <span class="fi fi-fr"></span>
+            <span>Français</span>
+          </button>
+          <button class="dropdown-item" data-lang="en">
+            <span class="fi fi-gb"></span>
+            <span>English</span>
+          </button>
+          <button class="dropdown-item" data-lang="de">
+            <span class="fi fi-de"></span>
+            <span>Deutsch</span>
+          </button>
+          <button class="dropdown-item" data-lang="es">
+            <span class="fi fi-es"></span>
+            <span>Español</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conteneur principal -->
+    <div class="container">
+      <!-- Section Flozze avec image animée -->
+      <div class="flozze-container">
+        <img src="./assets/flozzeNerd.png" alt="Flozze Nerd" class="flozze-image" id="flozzeImage">
+      </div>
+
+      <!-- Titre -->
+      <h1 data-i18n="title">Calculatrice</h1>
+
+      <!-- Section principale contenant la calculatrice -->
       <div id="gridContainer">
         <!-- Bouton pour afficher le résultat ou les entrées -->
         <button id="screenDisplay">0</button>
@@ -46,8 +101,138 @@
         <!-- Bouton pour le point décimal -->
         <button class="button" id="decimalButton">.</button>
       </div>
-    </section>
+    </div>
+
+    <script>
+      // Liste des images Flozze disponibles
+      const flozzeImages = [
+        './assets/flozzeNerd.png',
+        './assets/flozzeConfuse.png',
+        './assets/flozzeCry.png',
+        './assets/flozzeFluff.png',
+        './assets/flozzeInactive.png',
+        './assets/flozzeLol.png',
+        './assets/flozzeQuestion.png',
+        './assets/flozzeThumbs.png',
+        './assets/flozzeWrite.png'
+      ];
+
+      let currentImageIndex = 0;
+      const flozzeImage = document.getElementById('flozzeImage');
+
+      // Changer l'image toutes les 3 secondes
+      function changeFlozzeImage() {
+        currentImageIndex = (currentImageIndex + 1) % flozzeImages.length;
+        flozzeImage.style.opacity = '0';
+        
+        setTimeout(() => {
+          flozzeImage.src = flozzeImages[currentImageIndex];
+          flozzeImage.style.opacity = '1';
+        }, 300);
+      }
+
+      // Animation au clic sur l'image
+      if (flozzeImage) {
+        flozzeImage.addEventListener('click', () => {
+          flozzeImage.style.animation = 'none';
+          setTimeout(() => {
+            flozzeImage.style.animation = 'bounce 0.5s ease-in-out';
+          }, 10);
+          changeFlozzeImage();
+        });
+
+        // Changer automatiquement l'image
+        setInterval(changeFlozzeImage, 3000);
+
+        // Effet de transition douce pour l'image
+        flozzeImage.style.transition = 'opacity 0.3s ease-in-out';
+      }
+
+      // Créer des particules animées
+      function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        if (!particlesContainer) return;
+        
+        const particleCount = 20;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          
+          const size = Math.random() * 10 + 5;
+          particle.style.width = size + 'px';
+          particle.style.height = size + 'px';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.top = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 15 + 's';
+          particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+          
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Effet de parallaxe au mouvement de la souris
+      document.addEventListener('mousemove', (e) => {
+        const container = document.querySelector('.container');
+        if (container) {
+          const x = (e.clientX / window.innerWidth - 0.5) * 10;
+          const y = (e.clientY / window.innerHeight - 0.5) * 10;
+          
+          container.style.transform = `translate(${x}px, ${y}px)`;
+        }
+      });
+
+      // Initialiser les particules au chargement
+      window.addEventListener('load', () => {
+        createParticles();
+        
+        // Animation d'entrée
+        if (flozzeImage) {
+          flozzeImage.style.opacity = '0';
+          setTimeout(() => {
+            flozzeImage.style.transition = 'opacity 1s ease-in';
+            flozzeImage.style.opacity = '1';
+          }, 100);
+        }
+      });
+    </script>
+
+    <!-- Script pour i18n -->
+    <script type="module">
+      import { initI18n, changeLanguage } from './js/i18n.js';
+      
+      // Initialiser i18n au chargement
+      window.addEventListener('DOMContentLoaded', async () => {
+        await initI18n();
+        
+        // Gérer l'ouverture/fermeture du menu de langue
+        const languageButton = document.getElementById('languageButton');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const languageItems = languageDropdown.querySelectorAll('.dropdown-item');
+        
+        // Gérer l'ouverture/fermeture du menu de langue
+        languageButton.addEventListener('click', (e) => {
+          e.stopPropagation();
+          languageDropdown.classList.toggle('active');
+        });
+        
+        // Gérer la sélection de langue
+        languageItems.forEach(item => {
+          item.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const lang = item.getAttribute('data-lang');
+            await changeLanguage(lang);
+            languageDropdown.classList.remove('active');
+          });
+        });
+        
+        // Fermer le menu en cliquant ailleurs
+        document.addEventListener('click', (e) => {
+          if (!languageButton.contains(e.target) && !languageDropdown.contains(e.target)) {
+            languageDropdown.classList.remove('active');
+          }
+        });
+      });
+    </script>
   </body>
-  <!-- Lien vers le fichier JavaScript principal pour la logique de la calculatrice -->
-  <script type="module" src="./js/main.js"></script>
 </html>

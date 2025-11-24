@@ -44,7 +44,7 @@ export function initializeKeyboard(display, state) {
     if (button) {
       // Appliquer l'animation de pression
       button.style.transform = 'scale(0.95)';
-      button.style.boxShadow = '1px 1px 4px #202020';
+      button.style.boxShadow = '';
       
       // Simuler le clic
       button.click();
@@ -52,7 +52,7 @@ export function initializeKeyboard(display, state) {
       // Retour à l'état normal après un court délai
       setTimeout(() => {
         button.style.transform = 'scale(1)';
-        button.style.boxShadow = '3px 3px 12px #202020';
+        button.style.boxShadow = '';
       }, 100);
     }
   });

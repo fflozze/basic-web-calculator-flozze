@@ -1,27 +1,20 @@
 /**
- * Déclaration de la police personnalisée "Digital-7".
+ * @fileoverview Variables de police de l'application
+ * @author flozze
+ * @version 2.0.0
+ * @description Définition des variables de police utilisées dans toute l'application
  */
-@font-face {
-  /**
-   * Nom de la police personnalisée.
-   */
-  font-family: "Digital-7";
 
-  /**
-   * Chemin vers le fichier de police.
-   */
-  src: url("/css/font/digital-7.ttf") format("truetype");
+/* Configuration de la police personnalisée Orbitron */
+@font-face {
+  font-family: "Orbitron";
+  src: url("../font/Orbitron-VariableFont_wght.ttf");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-/**
- * Définition des variables globales pour les styles.
- */
+/* Définition de la variable de police globale */
 :root {
-  /**
-   * Variable pour la police de caractères principale.
-   */
-  --font-police: "Digital-7", monospace;
+  --font-police: "Orbitron", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

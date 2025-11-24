@@ -16,30 +16,30 @@ const addButtonAnimations = (button) => {
     // Animation lors de l'appui sur le bouton (souris)
     button.addEventListener('mousedown', () => {
         button.style.transform = 'scale(0.95)';
-        button.style.boxShadow = '1px 1px 4px #202020';
+        button.style.boxShadow = '';
     });
 
     // Retour à l'état normal lors du relâchement du bouton (souris)
     button.addEventListener('mouseup', () => {
         button.style.transform = 'scale(1)';
-        button.style.boxShadow = '3px 3px 12px #202020';
+        button.style.boxShadow = '';
     });
 
     // Retour à l'état normal si la souris quitte le bouton pendant l'appui
     button.addEventListener('mouseleave', () => {
         button.style.transform = 'scale(1)';
-        button.style.boxShadow = '3px 3px 12px #202020';
+        button.style.boxShadow = '';
     });
 
     // Support tactile pour les appareils mobiles
     button.addEventListener('touchstart', () => {
         button.style.transform = 'scale(0.95)';
-        button.style.boxShadow = '1px 1px 4px #202020';
+        button.style.boxShadow = '';
     });
 
     button.addEventListener('touchend', () => {
         button.style.transform = 'scale(1)';
-        button.style.boxShadow = '3px 3px 12px #202020';
+        button.style.boxShadow = '';
     });
 
     // Support du clavier
@@ -48,7 +48,7 @@ const addButtonAnimations = (button) => {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault(); // Empêche le défilement de la page avec la barre d'espace
             button.style.transform = 'scale(0.95)';
-            button.style.boxShadow = '1px 1px 4px #202020';
+            button.style.boxShadow = '';
         }
     });
 
@@ -56,14 +56,14 @@ const addButtonAnimations = (button) => {
         // Vérifie si la touche est Entrée ou Espace
         if (event.key === 'Enter' || event.key === ' ') {
             button.style.transform = 'scale(1)';
-            button.style.boxShadow = '3px 3px 12px #202020';
+            button.style.boxShadow = '';
         }
     });
 
     // Animation lors de la perte du focus (pour le clavier)
     button.addEventListener('blur', () => {
         button.style.transform = 'scale(1)';
-        button.style.boxShadow = '3px 3px 12px #202020';
+        button.style.boxShadow = '';
     });
 };
 

@@ -4,27 +4,48 @@
  * Style pour les boutons de la calculatrice.
  */
 .button {
-  background-color: var(--button-color); /* Couleur de fond */
-  box-shadow: 3px 3px 12px #1d1d1d; /* Ombre légère */
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.1); /* Ombre glassmorphism */
   display: flex; /* Utilisation de flexbox */
   justify-content: center; /* Centrage horizontal */
   align-items: center; /* Centrage vertical */
-  border-radius: 25px; /* Coins arrondis */
-  border: none; /* Suppression de la bordure */
-  color: var(--font-color); /* Couleur de la police */
-  text-shadow: 3px 3px 12px #8a8a8a; /* Ombre du texte */
+  border-radius: 12px; /* Coins arrondis */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure glassmorphism */
+  color: #ffffff; /* Couleur de la police blanche pour meilleure lisibilité */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
+               0 0 8px rgba(255, 255, 255, 0.15); /* Ombre du texte avec effet lumineux */
   font-family: var(--font-police); /* Police de caractères */
-  font-size: 4rem; /* Taille de la police */
+  font-size: 1.6rem; /* Taille de la police réduite pour meilleure lisibilité */
+  font-weight: 600;
   cursor: pointer; /* Curseur en forme de main */
-  transition: all 0.1s ease; /* Animation fluide pour toutes les propriétés */
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); /* Animation fluide */
   transform: scale(1); /* État initial */
+  user-select: none;
+  letter-spacing: 0.5px;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
+              inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Animation de pression au clavier */
 .keyboard-press {
-  transform: scale(0.95);
-  text-shadow: 3px 3px 12px #8a8a8a; /* Ombre du texte */
-  box-shadow: 1px 1px 4px #1d1d1d;
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
+              inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /**
@@ -32,28 +53,54 @@
  */
 #clearButton {
   grid-area: 2 / 1 / 3 / 2; /* Positionnement dans la grille */
-  background-color: var(--clear-button); /* Couleur de fond spécifique */
+  background: rgba(255, 100, 100, 0.2);
+  border-color: rgba(255, 150, 150, 0.4);
+}
+
+#clearButton:hover {
+  background: rgba(255, 120, 120, 0.3);
+  border-color: rgba(255, 170, 170, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /**
- * Style spécifique pour le bouton de division.
+ * Style spécifique pour les boutons d'opérations.
  */
+#divisionButton,
+#multiplicationButton,
+#additionButton,
+#soustractionButton {
+  background: rgba(200, 180, 255, 0.2);
+  border-color: rgba(220, 200, 255, 0.4);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
 #divisionButton {
   grid-area: 2 / 2 / 3 / 3; /* Positionnement dans la grille */
 }
 
-/**
- * Style spécifique pour le bouton de multiplication.
- */
 #multiplicationButton {
   grid-area: 2 / 3 / 3 / 4; /* Positionnement dans la grille */
 }
 
-/**
- * Style spécifique pour le bouton d'addition.
- */
 #additionButton {
   grid-area: 2 / 4 / 3 / 5; /* Positionnement dans la grille */
+}
+
+#soustractionButton {
+  grid-area: 3 / 4 / 4 / 5; /* Positionnement dans la grille */
+}
+
+#divisionButton:hover,
+#multiplicationButton:hover,
+#additionButton:hover,
+#soustractionButton:hover {
+  background: rgba(220, 200, 255, 0.3);
+  border-color: rgba(240, 220, 255, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /**
@@ -77,12 +124,6 @@
   grid-area: 3 / 3 / 4 / 4; /* Positionnement dans la grille */
 }
 
-/**
- * Style spécifique pour le bouton de soustraction.
- */
-#soustractionButton {
-  grid-area: 3 / 4 / 4 / 5; /* Positionnement dans la grille */
-}
 
 /**
  * Style spécifique pour le bouton "4".
@@ -110,7 +151,17 @@
  */
 #resultatButton {
   grid-area: 4 / 4 / 5 / 5; /* Positionnement dans la grille */
-  background-color: var(--addition-button); /* Couleur de fond spécifique */
+  background: rgba(150, 255, 150, 0.2);
+  border-color: rgba(180, 255, 180, 0.4);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+#resultatButton:hover {
+  background: rgba(170, 255, 170, 0.3);
+  border-color: rgba(200, 255, 200, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /**

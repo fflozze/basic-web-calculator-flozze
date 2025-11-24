@@ -1,66 +1,473 @@
-/* calculatrice.css */
-
 /**
- * Importation des fichiers CSS externes pour les couleurs et les polices.
+ * @fileoverview Styles principaux de l'application Calculatrice
+ * @author flozze
+ * @version 2.0.0
+ * @description Feuille de style principale qui importe et organise tous les styles de l'application
+ * Harmonisé avec le style du site principal
  */
+
+/* Import des fichiers CSS nécessaires */
 @import "./root/color.css";
 @import "./root/font.css";
 @import "./media-query/media-handler.css";
 @import "./button.css";
 
 /**
-  * Réinitialisation des marges et paddings pour tous les éléments.
-  */
+ * Réinitialisation des styles par défaut
+ */
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 /**
-  * Style pour le corps du document.
-  */
+ * Style du corps de la page
+ */
 body {
-  background-color: var(--bg-color); /* Couleur de fond principale */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-color);
+  min-height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Particules animées en arrière-plan */
+.particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.particle {
+  position: absolute;
+  background: var(--particle-color);
+  border-radius: 50%;
+  animation: float 15s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-100px) translateX(50px) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+/* Conteneur principal */
+.container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  transition: transform 0.1s ease-out;
+  overflow: hidden;
+}
+
+/* Section Flozze avec image animée */
+.flozze-container {
+  margin-bottom: 0.5rem;
+  position: relative;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flozze-image {
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: bounce 2s infinite ease-in-out;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px;
+}
+
+.flozze-image:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Style du titre principal */
+h1 {
+  font-family: var(--font-police);
+  font-size: 1.8rem;
+  color: white;
+  text-align: center;
+  margin: 0 0 0.8rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Style du bouton de retour */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.back-button:hover {
+  transform: translateX(-3px) scale(1.05);
+  background: var(--glass-hover);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.back-arrow {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1;
+}
+
+/* Styles pour les contrôles en haut à droite */
+.controls-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+  font-family: var(--font-police);
+}
+
+.control-group {
+  position: relative;
+}
+
+.control-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-police);
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-width: 80px;
+  justify-content: center;
+}
+
+.language-button {
+  justify-content: flex-start;
+  min-width: 120px;
+}
+
+.language-button .fi {
+  flex-shrink: 0;
+}
+
+.control-button:hover {
+  transform: scale(1.05);
+  background: var(--glass-hover);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.control-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: none;
+  flex-direction: column;
+  z-index: 1001;
+  padding: 5px;
+}
+
+.dropdown-menu.active {
+  display: flex;
+}
+
+.dropdown-item {
+  padding: 12px 15px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--glass-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-police);
+  font-size: 0.9rem;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item:last-child {
+  margin-bottom: 0;
+}
+
+.dropdown-item:hover {
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.dropdown-item:active {
+  transform: translateX(5px) scale(0.98);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles pour les drapeaux flag-icons */
+.fi {
+  display: inline-block;
+  width: 24px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /**
-  * Style pour le conteneur de la calculatrice.
-  */
+ * Style pour le conteneur de la calculatrice.
+ */
 #gridContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 colonnes égales */
   grid-template-rows: repeat(6, 1fr); /* 6 lignes égales */
   position: relative;
-  left: 5vw; /* Réduction du décalage horizontal */
-  top: 10vh; /* Réduction du décalage vertical */
-  height: 70vh; /* Ajustement de la hauteur */
+  height: auto;
+  min-height: 400px;
+  max-height: 480px;
   width: 90vw; /* Ajustement de la largeur */
-  grid-column-gap: 10px; /* Réduction de l'espacement entre les colonnes */
-  grid-row-gap: 10px; /* Réduction de l'espacement entre les lignes */
-  padding: 10px; /* Réduction de l'espacement intérieur */
-  background-color: var(
-    --bg-container-color
-  ); /* Couleur de fond des conteneurs */
+  max-width: 420px;
+  grid-column-gap: 10px; /* Espacement entre les colonnes */
+  grid-row-gap: 10px; /* Espacement entre les lignes */
+  padding: 18px; /* Espacement intérieur */
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 25px; /* Coins arrondis */
-  box-shadow: 3px 3px 12px #000000; /* Ombre légère pour l'effet de profondeur */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.1); /* Ombre avec effet glassmorphism */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeInUp 0.8s ease-out;
 }
 
 /**
-  * Style pour l'affichage de l'écran de la calculatrice.
-  */
+ * Style pour l'affichage de l'écran de la calculatrice.
+ */
 #screenDisplay {
   grid-area: 1 / 1 / 2 / 5; /* Positionnement dans la grille */
-  background-color: var(--button-color); /* Couleur de fond */
-  box-shadow: 3px 3px 12px #202020; /* Ombre légère */
-  border-radius: 25px; /* Coins arrondis */
-  border: none; /* Suppression de la bordure */
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1),
+              0 2px 10px rgba(0, 0, 0, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.4); /* Ombre glassmorphism */
+  border-radius: 15px; /* Coins arrondis */
+  border: 1px solid rgba(255, 255, 255, 0.3);
   display: flex; /* Utilisation de flexbox */
   align-items: center; /* Centrage vertical */
   justify-content: flex-end; /* Alignement à droite */
-  padding-right: 15px; /* Espacement intérieur à droite */
-  color: var(--font-color); /* Couleur de la police */
-  text-shadow: 3px 3px 12px #747474; /* Ombre du texte */
+  padding: 12px 18px; /* Espacement intérieur réduit */
+  color: #ffffff; /* Couleur de la police blanche pour meilleure lisibilité */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
+               0 0 10px rgba(255, 255, 255, 0.2); /* Ombre du texte avec effet lumineux */
   font-family: var(--font-police); /* Police de caractères */
-  font-size: 4rem; /* Taille de la police */
+  font-size: 2.2rem; /* Taille de la police ajustée */
+  font-weight: 600;
   overflow: hidden;
+  letter-spacing: 1px;
+  min-height: 55px;
+}
+
+/* Responsive pour les petits écrans */
+@media (max-width: 768px) {
+  .controls-container {
+    top: 10px;
+    right: 10px;
+    gap: 5px;
+  }
+
+  .control-button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    min-width: 70px;
+  }
+
+  .control-text {
+    font-size: 0.8rem;
+  }
+
+  .dropdown-menu {
+    min-width: 180px;
+    max-height: 250px;
+  }
+
+  .fi {
+    width: 20px;
+    height: 15px;
+    margin-right: 6px;
+  }
+
+  .flozze-container {
+    height: 70px;
+    margin-bottom: 0.3rem;
+  }
+
+  .flozze-image {
+    max-width: 60px;
+    max-height: 60px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  #gridContainer {
+    width: 95vw;
+    max-width: 380px;
+    min-height: 360px;
+    max-height: 420px;
+    padding: 12px;
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+  }
+
+  #screenDisplay {
+    font-size: 1.8rem;
+    padding: 10px 15px;
+    min-height: 45px;
+  }
+
+  .button {
+    font-size: 1.3rem;
+  }
+
+  #divisionButton,
+  #multiplicationButton,
+  #additionButton,
+  #soustractionButton,
+  #resultatButton {
+    font-size: 1.5rem;
+  }
+}
+
+/* Responsive pour les très petits écrans */
+@media (max-width: 480px) {
+  .flozze-container {
+    height: 60px;
+    margin-bottom: 0.2rem;
+  }
+
+  .flozze-image {
+    max-width: 50px;
+    max-height: 50px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    margin: 0 0 0.4rem 0;
+  }
+
+  #gridContainer {
+    width: 98vw;
+    max-width: 340px;
+    min-height: 320px;
+    max-height: 380px;
+    padding: 10px;
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+  }
+
+  #screenDisplay {
+    font-size: 1.5rem;
+    padding: 8px 12px;
+    min-height: 40px;
+  }
+
+  .button {
+    font-size: 1.1rem;
+  }
+
+  #divisionButton,
+  #multiplicationButton,
+  #additionButton,
+  #soustractionButton,
+  #resultatButton {
+    font-size: 1.3rem;
+  }
 }
