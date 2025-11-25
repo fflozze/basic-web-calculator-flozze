@@ -127,3 +127,26 @@ La documentation du code est générée avec JSDoc. Pour générer la documentat
 ## Auteur 👨‍💻
 
 **Flozze**
+
+
+---
+
+## Qualité du code et logique de calcul 🧠
+
+- La logique de calcul est centralisée dans `js/calculator.js`.
+- Les opérateurs d'interface `×` et `÷` sont automatiquement normalisés en interne vers `*` et `/`.
+- Les entrées invalides et la division par zéro renvoient `Erreur` à l'écran.
+- Un arrondi technique est appliqué pour éviter les artefacts (ex: 0.30000000000000004).
+
+## Structure mise à jour 🗂️
+
+- `js/i18n.js` : internationalisation (i18next) et sélecteur de langue.
+- `locales/*.json` : traductions (fr, en, de, es).
+- `NAMING.md` : conventions de nommage du projet.
+- `TECHNOLOGIES.md` : technologies et décisions d'architecture.
+
+## Liens utiles 🔗
+
+- Conventions de nommage: `NAMING.md`
+- Technologies et outils: `TECHNOLOGIES.md` (ou `THECNOLOGIES.md`)
+

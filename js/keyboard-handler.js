@@ -3,9 +3,8 @@
  */
 
 /**
- * Importation de la fonction de calcul depuis le fichier calculator.js.
+ * Importation des utilitaires nécessaires.
  */
-import { calculate } from "./calculator.js";
 import { handleBackspace } from "./button-handler.js";
 
 /**

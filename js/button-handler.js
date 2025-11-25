@@ -31,13 +31,16 @@ export function initializeButtons(buttons, display, state) {
 
 /**
  * Gère l'entrée d'un nombre.
+ * - Évite les zéros non significatifs en tête
  * @param {string} value - Le nombre entré.
  * @param {HTMLElement} display - L'élément d'affichage.
  * @param {Object} state - L'état de la calculatrice.
  */
 function handleNumberInput(value, display, state) {
   if (state.currentInput === "0") {
-    state.currentInput = value;
+    state.currentInput = value; // remplace le 0 initial
+  } else if (state.currentInput === "" && value === "0") {
+    state.currentInput = "0"; // garde un seul zéro
   } else {
     state.currentInput += value;
   }
@@ -51,7 +54,7 @@ function handleNumberInput(value, display, state) {
  */
 function handleDecimalInput(display, state) {
   if (!state.currentInput.includes(".")) {
-    state.currentInput += ".";
+    state.currentInput = state.currentInput === "" ? "0." : state.currentInput + ".";
     display.textContent = state.currentInput;
   }
 }
@@ -106,28 +109,17 @@ function handleOperatorInput(value, display, state) {
 function handleEqualsInput(display, state) {
   if (state.previousInput === "" || state.currentInput === "") return;
 
-  const prev = parseFloat(state.previousInput);
-  const current = parseFloat(state.currentInput);
-  let result;
+  const result = calculate(state.previousInput, state.operator, state.currentInput);
 
-  switch (state.operator) {
-    case "+":
-      result = prev + current;
-      break;
-    case "-":
-      result = prev - current;
-      break;
-    case "×":
-      result = prev * current;
-      break;
-    case "÷":
-      result = prev / current;
-      break;
-    default:
-      return;
+  if (result === "Erreur" || !isFinite(result)) {
+    display.textContent = "Erreur";
+    state.currentInput = "";
+    state.operator = "";
+    state.previousInput = "";
+    return;
   }
 
-  state.currentInput = result.toString();
+  state.currentInput = String(result);
   display.textContent = state.currentInput;
   state.operator = "";
   state.previousInput = "";
