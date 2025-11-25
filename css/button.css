@@ -16,7 +16,7 @@
   color: #ffffff; /* Couleur de la police blanche pour meilleure lisibilité */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
                0 0 8px rgba(255, 255, 255, 0.15); /* Ombre du texte avec effet lumineux */
-  font-family: var(--font-police); /* Police de caractères */
+  font-family: var(--font-police), sans-serif; /* Police de caractères */
   font-size: 1.6rem; /* Taille de la police réduite pour meilleure lisibilité */
   font-weight: 600;
   cursor: pointer; /* Curseur en forme de main */
