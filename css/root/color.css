@@ -32,10 +32,44 @@
   
   /* Couleurs des ombres */
   --shadow-color: rgba(255, 255, 255, 0.5);
-  
+
+  /* Utilitaires de couleurs */
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Fonds spécifiques */
+  --panel-bg: rgba(255, 255, 255, 0.1);
+  --screen-bg: rgba(255, 255, 255, 0.15);
+
+  /* Inset shadows prêts à l'emploi */
+  --inset-top: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  --inset-bottom: inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  --inset-top-strong: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+  /* Couleurs de bordure utilitaires */
+  --border-default: rgba(255, 255, 255, 0.3);
+  --border-strong: rgba(255, 255, 255, 0.4);
+
   /* Couleurs des boutons spéciaux */
   --clear-button: rgba(212, 0, 0, 0.8);
   --addition-button: rgba(103, 219, 97, 0.8);
+
+  /* Variants pour boutons */
+  --danger-bg: rgba(255, 100, 100, 0.2);
+  --danger-border: rgba(255, 150, 150, 0.4);
+  --danger-hover-bg: rgba(255, 120, 120, 0.3);
+  --danger-hover-border: rgba(255, 170, 170, 0.5);
+
+  --op-bg: rgba(200, 180, 255, 0.2);
+  --op-border: rgba(220, 200, 255, 0.4);
+  --op-hover-bg: rgba(220, 200, 255, 0.3);
+  --op-hover-border: rgba(240, 220, 255, 0.5);
+
+  /* Variants succès (bouton =) */
+  --success-bg: rgba(150, 255, 150, 0.2);
+  --success-border: rgba(180, 255, 180, 0.4);
+  --success-hover-bg: rgba(170, 255, 170, 0.3);
+  --success-hover-border: rgba(200, 255, 200, 0.5);
   
   /* Couleurs des particules */
   --particle-color: rgba(255, 255, 255, 0.3);
